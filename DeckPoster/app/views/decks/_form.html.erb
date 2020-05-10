@@ -1,0 +1,15 @@
+<%= form_for deck do |f|%>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :decklist %>
+      <%= f.text_field :decklist %>
+    </p>
+    <p>
+      <%= f.label :description %>
+      <%= f.date_field :description %>
+    </p>
+      <%= f.submit %>
+    <% end %>

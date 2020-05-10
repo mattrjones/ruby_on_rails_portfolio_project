@@ -1,0 +1,4 @@
+<h1>All Decks</h1>
+<%= @decks.each do |deck| %>
+    <% link_to deck, deck_path(deck.id) %>
+    <%end %>
