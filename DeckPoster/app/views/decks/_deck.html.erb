@@ -1,11 +1,17 @@
-<ul>
-  <li>
-    Name: <%= deck.name %>
-  </li>
-  <li>
-    List: <%= deck.decklist %>
-  </li>
-  <li>
-    Description: <%= deck.description %>
-  </li>
-</ul>
+    <h2><%= deck.name %></h2>
+    <div><h3>List:</h3> <%= deck.decklist %></div>
+    <div><h3>Description:</h3> <%= deck.description %></div>
+
+    <div><%= link_to 'Edit Deck', edit_deck_path(deck) %></div>
+    <h3>Add a New Comment</h3>
+    <%= form_for(@comment = Comment.new) do |f| %>
+      <%= f.label :content %>
+      <%= f.text_field :content %><br />
+      <input type="hidden" name="comment[deck_id]" value="<%= @deck.id %>">
+      <%= f.submit %>
+      <% end %>
+
+    <h2>Comments on This Deck:</h2>
+    <% deck.comments.each do |c| %>
+        <div><%= c.content %></div>
+        <% end %>
