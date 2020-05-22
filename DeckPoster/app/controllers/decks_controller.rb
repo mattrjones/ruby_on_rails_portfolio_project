@@ -1,6 +1,15 @@
 class DecksController < ApplicationController
   def index
-    @decks = Deck.all
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      if @user.nil?
+        redirect_to users_path, alert: "User not found"
+      else 
+        @decks = @user.decks 
+      end 
+    else
+      @decks = Deck.all 
+    end 
   end
 
   def show
@@ -13,8 +22,11 @@ class DecksController < ApplicationController
 
   def create 
     @deck = Deck.new(deck_params)
-    #@deck.user_id = current_user.id
+    if @deck.save 
     redirect_to @deck
+    else 
+      render :new 
+    end 
   end 
 
   def edit 
@@ -31,7 +43,7 @@ class DecksController < ApplicationController
   private 
 
   def deck_params
-    params.require(:deck).permit(:name, :decklist, :description, :user_id)
+    params.require(:deck).permit(:name, :decklist, :description, :user_id, :archetype_id)
   end 
 
 end
