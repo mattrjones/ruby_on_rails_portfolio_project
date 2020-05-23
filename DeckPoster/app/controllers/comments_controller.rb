@@ -22,12 +22,16 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(comment_params)
+    if @comment.save
     redirect_to @comment.deck
+    else 
+      render :new 
+    end 
   end
 
   private 
 
   def comment_params
-    params.permit(:content, :deck_id, :user_id)
+    params.permit(:content, :deck_id)
   end 
 end

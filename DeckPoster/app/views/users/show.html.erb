@@ -1,5 +1,8 @@
 <%= link_to "My Decks", user_decks_path(@user) %>
-<%= link_to "My Comments", user_comments_path(@user) %>
+<h3>My Comments</h3>
+<% @user.comments.each do |c| %>
+    <%= link_to c.content, user_comment_path(@user, c) %>
+    <% end %>
 <%= link_to "Create A New Deck", new_user_deck_path(@user) %>
 
 <h1> This is where we show the users decks, comments, etc. </h1>

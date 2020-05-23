@@ -1,4 +1,2 @@
-<% current_user.comments.each do |c| %> 
-    <%= c.content %>
-<%= c.deck.name %>
-    <% end %>
+<h3> <%= User.find(@comment.user_id).username %> said this about your deck, <%= @comment.deck.name %>: </h3>
+<div><%= @comment.content %></div>
