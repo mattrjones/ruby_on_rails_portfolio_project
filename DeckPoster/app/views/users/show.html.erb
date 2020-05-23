@@ -12,8 +12,9 @@
 
 <h3>My Archetypes</h3>
 
+<% uniq_archs = @user.archetypes.uniq %>
 <ol>
-<% @user.map(&:archetype).uniq.each do |a| %>
+<% uniq_archs.each do |a| %>
     <li>You have posted to the <%= a.name %> archetype with these decks: </li>
     <ul>
     <% a.decks.each do |d| %>
