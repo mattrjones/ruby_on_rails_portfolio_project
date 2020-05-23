@@ -1,9 +1,9 @@
 <h1>Welcome</h1>
 <% if logged_in? %>
     <h1>You are Logged In, <%= current_user.username %></h1>
-    <%= button_to "My Decks", user_decks_path(current_user) %>
-    <%= button_to "My Comments", user_comments_path(@user) %>
-    <%= button_to "Create A New Deck", new_user_deck_path(current_user) %>
+    <%= link_to "My Decks", user_decks_path(current_user) %>
+    <%= link_to "My Comments", user_comments_path(@user) %>
+    <%= link_to "Create A New Deck", new_user_deck_path(@user) %>
 <%else%>
 <%= button_to "Login", '/login', method: :get%>
 <%= button_to "Sign Up", '/users/new', method: :get%>

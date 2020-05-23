@@ -1,6 +1,15 @@
 class CommentsController < ApplicationController
   def index
-    @comments = Comment.all
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      if @user.nil?
+        redirect_to users_path, alert: "User not found"
+      else 
+        @comments = @user.comments 
+      end 
+    else
+      @comments = Comment.all 
+    end 
   end
 
   def new
