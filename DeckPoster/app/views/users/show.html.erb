@@ -1,8 +1,29 @@
-<%= link_to "My Decks", user_decks_path(@user) %>
-<h3>My Comments</h3>
-<% @user.comments.each do |c| %>
-    <%= link_to c.content, user_comment_path(@user, c) %>
-    <% end %>
-<%= link_to "Create A New Deck", new_user_deck_path(@user) %>
+<h1> <%= @user.username %> </h1>
 
-<h1> This is where we show the users decks, comments, etc. </h1>
+<div><%= link_to "My Decks", user_decks_path(@user) %></div>
+
+<h3>My Comments</h3>
+
+<ul>
+<% @user.comments.each do |c| %>
+    <li><%= link_to c.content, user_comment_path(@user, c) %></li>
+    <% end %>
+    </ul>
+
+<h3>My Archetypes</h3>
+
+<ol>
+<% @user.map(&:archetype).uniq.each do |a| %>
+    <li>You have posted to the <%= a.name %> archetype with these decks: </li>
+    <ul>
+    <% a.decks.each do |d| %>
+        <% if d.user_id == current_user.id %>
+            <li><%= d.name %></li>
+            <% end %>
+            <% end %>
+            </ul>
+            <% end %>
+            </ol>
+
+<div><%= link_to "Create A New Deck", new_user_deck_path(@user) %></div>
+

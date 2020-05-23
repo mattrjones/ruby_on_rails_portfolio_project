@@ -1,12 +1,6 @@
 <h1>Welcome</h1>
 <% if logged_in? %>
-    <h1>You are Logged In, <%= current_user.username %></h1>
-    <%= link_to "My Decks", user_decks_path(current_user) %>
-    <h3>My Comments</h3>
-    <% @user.comments.each do |c| %>
-        <%= link_to c.content, user_comment_path(@user, c) %>
-        <% end %>
-    <%= link_to "Create A New Deck", new_user_deck_path(@user) %>
+    <%= controller.redirect_to user_path(current_user) %>
 <%else%>
 <%= button_to "Login", '/login', method: :get%>
 <%= button_to "Sign Up", '/users/new', method: :get%>
