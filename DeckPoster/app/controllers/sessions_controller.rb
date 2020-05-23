@@ -13,6 +13,13 @@ class SessionsController < ApplicationController
     else 
        redirect_to '/login'
     end
+
+    private
+ 
+    def auth
+      request.env['omniauth.auth']
+    end
+    
  end
  
 

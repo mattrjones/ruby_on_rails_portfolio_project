@@ -3,5 +3,6 @@
     <%= controller.redirect_to user_path(current_user) %>
 <%else%>
 <%= button_to "Login", '/login', method: :get%>
+<%= link_to('Log in with Facebook!', '/auth/facebook') %>
 <%= button_to "Sign Up", '/users/new', method: :get%>
 <% end %>
