@@ -3,5 +3,7 @@
       <%= f.label :content %>
       <%= f.text_area :content %>
     </p>
+    <%= f.hidden_field :user_id, :value => current_user.id%>
+    <%= f.hidden_field :deck_id, :value => params[:deck_id] %>
       <%= f.submit %>
     <% end %>

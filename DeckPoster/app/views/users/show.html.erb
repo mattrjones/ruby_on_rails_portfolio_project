@@ -1,12 +1,19 @@
 <h1> <%= @user.username %> </h1>
 
 <div><%= link_to "My Decks", user_decks_path(@user) %></div>
+<h3>Your Decks</h3>
 
-<h3>My Comments</h3>
+<ul>
+<% @user.decks.each do |d| %>
+    <li><%= link_to d.name, user_deck_path(@user, d) %></li>
+    <% end %>
+    </ul>
+
+<h3>Comments on Your Decks</h3>
 
 <ul>
 <% @user.comments.each do |c| %>
-    <li><%= link_to c.content, user_comment_path(@user, c) %></li>
+    <li><%= link_to c.content, user_comment_path(@user, c) %>, on <%= c.deck.name %></li>
     <% end %>
     </ul>
 
