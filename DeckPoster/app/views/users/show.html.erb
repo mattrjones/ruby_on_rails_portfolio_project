@@ -9,6 +9,13 @@
     <% end %>
     </ul>
 
+    <h3> Your Commented Decks </h3>
+    <ul>
+<% @user.decks.commented.each do |d| %>
+    <li><%= link_to d.name, user_deck_path(@user, d) %></li>
+    <% end %>
+    </ul>
+
 <h3>Comments on Your Decks</h3>
 
 <ul>

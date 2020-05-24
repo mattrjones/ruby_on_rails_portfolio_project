@@ -5,7 +5,8 @@ class CreateDecks < ActiveRecord::Migration[6.0]
       t.string :decklist
       t.string :description
       t.integer :user_id
-      t.integer :archetype_id 
+      t.integer :archetype_id
+      t.integer :comments_count 
 
     end
   end
