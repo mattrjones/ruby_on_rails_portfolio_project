@@ -15,4 +15,9 @@ class Deck < ActiveRecord::Base
         self.archetype = archetype
     end 
 
+    def self.search(search)
+        where("archetype_name LIKE ?", "%#{search}")
+    end
+
+
 end 

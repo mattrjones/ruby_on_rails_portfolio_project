@@ -11,7 +11,12 @@
 
   <body>
   <%= link_to "Logout", '/logout' %>
-  <%= link_to "Home Page", '/welcome' %>
+  <%= link_to "My Home Page", '/welcome' %>
+
+  <% if logged_in? %> 
+    <%= link_to "Archetypes", archetypes_path %>
+    <%= link_to "All Decks", decks_path %>
+    <% end %>
 
     <%= yield %>
   </body>

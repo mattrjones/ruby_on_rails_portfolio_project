@@ -4,11 +4,13 @@ class DecksController < ApplicationController
       @user = User.find_by(id: params[:user_id])
       if @user.nil?
         redirect_to users_path, alert: "User not found"
+
       else 
         @decks = @user.decks 
       end 
-    else
-      @decks = Deck.all 
+    else 
+      @q = Deck.ransack(params[:q])
+   @decks = @q.result(distinct: true)
     end 
   end
 

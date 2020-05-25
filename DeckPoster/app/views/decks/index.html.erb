@@ -1,6 +1,19 @@
 <h1>All Decks</h1>
-<% @decks.each do |deck| %>
-<div><%= link_to deck.name, deck%></div> 
-    <%end %>
-    <p></p>
-    <div><%= link_to "Create a New Deck", new_user_deck_path(current_user) %></div>
+<%= search_form_for @q do |f| %>
+
+    <div>Search by deck name
+    <%= f.label :name_cont %>
+    <%= f.search_field :name_cont %></div>
+  
+<div>Search by deck archetype
+    <%= f.label :archetype_name_cont %>
+    <%= f.search_field :archetype_name_cont %></div>
+  
+    <%= f.submit %>
+  <% end %>
+
+  <% @decks.each do |deck| %>
+    <div><%= link_to deck.name, deck%></div> 
+        <%end %>
+        <p></p>
+        <div><%= link_to "Create a New Deck", new_user_deck_path(current_user) %></div>
