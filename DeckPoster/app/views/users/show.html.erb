@@ -1,8 +1,8 @@
 <h1> <%= @user.username %> </h1>
 
-<h3> Your Decks:</h3>
+<h3>Your Decks:</h3>
 <ul>
-<% @user.decks.each do |d| %>
+<% Deck.creator(@user.id).each do |d| %>
     <li><%= link_to d.name, user_deck_path(@user, d) %></li>
     <% end %>
     </ul>

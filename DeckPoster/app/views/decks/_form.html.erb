@@ -1,19 +1,26 @@
 <%= form_for deck do |f|%>
 
-      <p><%= f.label :name %>
-      <%= f.text_field :name %>
-      </p>
+  <% if @deck.errors.any? %>
+<ul>
+  <% @deck.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+   <p><%= f.label :name %></p>
+     <p><%= f.text_field :name %></p>
 
-      <p><%= f.label :archetype_name %>
-      <%= f.text_field :archetype_name %></p>
+      <p><%= f.label :archetype_name %></p>
+     <p><%= f.text_field :archetype_name %></p>
 
-      <p><%= f.label :decklist %> 
-      <%= f.text_area :decklist %></p>
+     <p><%= f.label :decklist %></p> 
+    <p><%= f.text_area :decklist %></p>
 
-      <p><%= f.label :description %>
-      <%= f.text_area :description %></p>
+     <p><%= f.label :description %></p>
+     <p><%= f.text_area :description %></p>
 
       <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :user_name, value: current_user.username %>
  
       <%= f.submit %> 
     <% end %>

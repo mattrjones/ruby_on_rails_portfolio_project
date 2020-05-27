@@ -1,2 +1,2 @@
-<h2>A comment on <%= comment.deck.name %> by INSERT NAME HERE</h2>
-<%= comment.content %> 
+<h3> <%= User.find(commentt.user_id).username %> said this about your deck, <%= link_to comment.deck.name, deck_path(comment.deck) %>: </h3>
+<div><%= comment.content %></div> 
