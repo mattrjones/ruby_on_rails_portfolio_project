@@ -1,2 +1,7 @@
-<h1>Archetypes#show</h1>
-<p>Find me in app/views/archetypes/show.html.erb</p>
+<h1><%= @archetype.name %> Decks:</h1>
+
+<ol>
+<% @archetype.decks.each do |d| %>
+    <li><%= link_to d.name, deck_path(d) %></li>
+    <% end %>
+    </ol>

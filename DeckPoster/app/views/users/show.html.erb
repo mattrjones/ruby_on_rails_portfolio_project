@@ -1,15 +1,13 @@
 <h1> <%= @user.username %> </h1>
 
-<div><%= link_to "My Decks", user_decks_path(@user) %></div>
-<h3>Your Decks</h3>
-
+<h3> Your Decks:</h3>
 <ul>
 <% @user.decks.each do |d| %>
     <li><%= link_to d.name, user_deck_path(@user, d) %></li>
     <% end %>
     </ul>
 
-<h3>Comments on Your Decks</h3>
+<h3>Comments on Your Decks:</h3>
 
 <ul>
 <% @user.comments.each do |c| %>
@@ -17,7 +15,7 @@
     <% end %>
     </ul>
 
-<h3>My Archetypes</h3>
+<h3>Your Archetypes:</h3>
 
 <% uniq_archs = @user.archetypes.uniq %>
 <ol>

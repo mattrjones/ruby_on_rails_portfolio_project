@@ -8,5 +8,5 @@
 
     <h2>Comments on This Deck:</h2>
     <% deck.comments.each do |c| %>
-        <div><%= c.content %></div>
+        <div><%= c.content %>, by <%= c.user.username %></div>
         <% end %>
