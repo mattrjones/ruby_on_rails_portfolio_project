@@ -11,7 +11,7 @@
 
 <ul>
 <% @user.comments.each do |c| %>
-    <li><%= link_to c.content, user_comment_path(@user, c) %>, on <%= c.deck.name %></li>
+    <li><%= link_to c.content.first(30)+"...", user_comment_path(@user, c) %> on <%= c.deck.name %></li>
     <% end %>
     </ul>
 

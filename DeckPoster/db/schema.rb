@@ -28,11 +28,14 @@ ActiveRecord::Schema.define(version: 2020_05_13_153018) do
     t.string "description"
     t.integer "user_id"
     t.integer "archetype_id"
+    t.integer "comments_count"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "email"
+    t.string "image"
+    t.string "uid"
     t.string "password_digest"
   end
 

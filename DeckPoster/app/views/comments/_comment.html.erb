@@ -1,2 +1,2 @@
-<h3> <%= User.find(commentt.user_id).username %> said this about your deck, <%= link_to comment.deck.name, deck_path(comment.deck) %>: </h3>
+<h3> <%= User.find(comment.user_id).username %> said this about your deck, <%= link_to comment.deck.name, deck_path(comment.deck) %>: </h3>
 <div><%= comment.content %></div> 
