@@ -8,6 +8,6 @@
 
     <h2>Comments on This Deck:</h2>
     <% deck.comments.each do |c| %>
-        <h3><%= c.user.username %> says, </h3>
+        <h3><%= c.user.email %> says, </h3>
         <div><%= c.content %></div>
         <% end %>

@@ -85,6 +85,12 @@ GEM
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     daemons (1.3.1)
+    devise (4.7.2)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     dotenv (2.7.5)
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
@@ -101,7 +107,12 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
+    json (2.3.1)
     jwt (2.2.1)
+    koala (3.0.0)
+      addressable
+      faraday
+      json (>= 1.8)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -150,6 +161,10 @@ GEM
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
+    omniauth-twitter (1.4.0)
+      omniauth-oauth (~> 1.1)
+      rack
+    orm_adapter (0.5.0)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     public_suffix (4.0.5)
@@ -196,6 +211,9 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.7.0)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
@@ -235,6 +253,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
+    warden (1.2.8)
+      rack (>= 2.0.6)
     web-console (4.0.2)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -263,14 +283,18 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  devise
+  dotenv
   dotenv-rails
   jbuilder (~> 2.7)
+  koala
   listen (>= 3.0.5, < 3.2)
   omniauth
   omniauth-discord
   omniauth-facebook
   omniauth-github!
   omniauth-google
+  omniauth-twitter
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.2)
   ransack
