@@ -1,5 +1,6 @@
 <% @users.each do |u| %>
     <% u.decks_posted= Deck.creator(u.id).count %>
+    <% u.save %>
         <% end %>
 
         <% ordered_users = User.order_by_decks %> 

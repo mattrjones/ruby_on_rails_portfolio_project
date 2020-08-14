@@ -1,9 +1,10 @@
 class DecksController < ApplicationController
 
-  before_action :set_user, only: [:index, :show]
-  before_action :set_deck, only: [:show, :edit, :update]
+  before_action :set_user, only: [:index]
+  before_action :set_deck, only: [:edit, :update]
   def index
     if params[:user_id]
+      @user = User.find_by(params[:id])
       if @user.nil?
       redirect_to users_path, alert: "User not found"
 
@@ -18,11 +19,13 @@ class DecksController < ApplicationController
 
   def show
     if params[:user_id]
+      @user = User.find_by(params[:id])
       @deck = @user.decks.find_by(id: params[:id])
       if @deck.nil?
         redirect_to user_decks_path(@user), alert: "Deck not found"
       end
     else
+      @deck = Deck.find_by(params[:id])
       @user = User.find_by(id: session[:user_id])
     end
   end

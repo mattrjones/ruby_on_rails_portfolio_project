@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#create'
   get 'decks/commented', to: 'decks#commented'
-  get 'users/most_decks', to: 'users#most_decks'
+  get 'mostdecks', to: 'users#most_decks'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 resources :decks do 
