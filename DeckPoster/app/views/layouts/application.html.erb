@@ -16,6 +16,7 @@
   <% if logged_in? %> 
     <%= link_to "Archetypes", archetypes_path %>
     <%= link_to "All Decks", decks_path %>
+    <%= link_to "Commented Decks", '/decks/commented' %>
     <% end %>
 
     <%= yield %>

@@ -23,6 +23,8 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.create(comment_params)
     if @comment.save
+      @comment.deck.comments_count += 1
+      @comment.deck.save 
     redirect_to @comment.deck
     else 
       render :new 

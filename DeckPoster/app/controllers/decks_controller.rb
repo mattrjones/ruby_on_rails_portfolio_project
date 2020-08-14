@@ -50,6 +50,9 @@ class DecksController < ApplicationController
     redirect_to deck_path(@deck)
   end
 
+  def commented
+  end 
+
   private 
 
   def deck_params
