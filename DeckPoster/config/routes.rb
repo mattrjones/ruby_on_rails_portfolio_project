@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'
   get 'logout', to: 'sessions#destroy'
-  get '/auth/facebook/callback' => 'sessions#create'
+  get '/auth/facebook/callback' => 'sessions#createfb'
   get 'decks/commented', to: 'decks#commented'
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 resources :decks do 
