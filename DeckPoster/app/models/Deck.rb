@@ -11,6 +11,7 @@ validates :description, length: {maximum: 200}
 validates :description, length: {minimum: 50}
 scope :creator, -> (id) { where(user_id: id) }
 scope :commented, -> {where ("comments_count > 0")}
+before_save :default_comments_count
 
     def archetype_name 
         self.try(:archetype).try(:name)
