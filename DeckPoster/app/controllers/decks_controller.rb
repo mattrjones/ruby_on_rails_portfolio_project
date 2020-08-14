@@ -19,14 +19,14 @@ class DecksController < ApplicationController
 
   def show
     if params[:user_id]
-      @user = User.find_by(params[:id])
+      @user = User.find_by(id: params[:user_id])
       @deck = @user.decks.find_by(id: params[:id])
       if @deck.nil?
         redirect_to user_decks_path(@user), alert: "Deck not found"
       end
     else
-      @deck = Deck.find_by(params[:id])
       @user = User.find_by(id: session[:user_id])
+      @deck = Deck.find(params[:id])
     end
   end
 
@@ -44,9 +44,11 @@ class DecksController < ApplicationController
   end 
 
   def edit 
+    @deck = Deck.find_by(params[:id])
   end
 
   def update 
+    @deck = Deck
     @deck.update(deck_params)
  
     redirect_to deck_path(@deck)
