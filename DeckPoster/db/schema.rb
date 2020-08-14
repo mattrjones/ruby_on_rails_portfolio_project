@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_152018) do
+ActiveRecord::Schema.define(version: 2020_08_14_031608) do
 
   create_table "archetypes", force: :cascade do |t|
     t.string "name"
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 2020_05_13_152018) do
     t.string "name"
     t.string "email"
     t.string "image"
-    t.string "password_digest"
     t.integer "uid"
+    t.string "password"
   end
 
 end

@@ -51,7 +51,7 @@ class DecksController < ApplicationController
   end
 
   def commented
-  end 
+  end
 
   private 
 
