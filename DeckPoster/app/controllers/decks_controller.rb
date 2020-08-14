@@ -1,9 +1,11 @@
 class DecksController < ApplicationController
+
+  before_action :set_user, only: [:index, :show]
+  before_action :set_deck, only: [:show, :edit, :update]
   def index
     if params[:user_id]
-      @user = User.find_by(id: params[:user_id])
       if @user.nil?
-        redirect_to users_path, alert: "User not found"
+      redirect_to users_path, alert: "User not found"
 
       else 
         @decks = @user.decks 
@@ -16,14 +18,12 @@ class DecksController < ApplicationController
 
   def show
     if params[:user_id]
-      @user = User.find_by(id: params[:user_id])
       @deck = @user.decks.find_by(id: params[:id])
       if @deck.nil?
         redirect_to user_decks_path(@user), alert: "Deck not found"
       end
     else
       @user = User.find_by(id: session[:user_id])
-      @deck = Deck.find(params[:id])
     end
   end
 
@@ -41,11 +41,9 @@ class DecksController < ApplicationController
   end 
 
   def edit 
-    @deck = Deck.find(params[:id])
   end
 
   def update 
-    @deck = Deck.find(params[:id])
     @deck.update(deck_params)
  
     redirect_to deck_path(@deck)
@@ -58,6 +56,14 @@ class DecksController < ApplicationController
 
   def deck_params
     params.require(:deck).permit(:name, :archetype_name, :description, :decklist, :user_id)
+  end 
+
+  def set_user
+    @user = User.find_by(params[:id])
+  end 
+
+  def set_deck 
+    @deck = Deck.find_by(params[:id])
   end 
 
 end

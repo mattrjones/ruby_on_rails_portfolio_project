@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
     has_many :decks
 has_many :comments, through: :decks 
 has_many :archetypes, through: :decks
-before_save :default_name 
+before_save :default_name
+scope :order_by_decks, -> {order(decks_posted: :desc)}  
 
 
 def self.find_or_create_by_omniauth(auth_hash)
@@ -15,4 +16,8 @@ def self.find_or_create_by_omniauth(auth_hash)
    def default_name
     self.name ||= ""
    end 
+
+   def decks_posted=(int)
+self.decks_posted = int 
+end 
 end 

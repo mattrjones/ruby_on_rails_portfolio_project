@@ -1,0 +1,8 @@
+<% @users.each do |u| %>
+    <% u.decks_posted= Deck.creator(u.id).count %>
+        <% end %>
+
+        <% ordered_users = User.order_by_decks %> 
+        <% @users.each do |u| %>
+            <div><%= u.name %> has posted <%= u.decks_posted %> decks.</div>
+            <% end %>

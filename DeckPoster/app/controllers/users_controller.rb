@@ -20,6 +20,10 @@ class UsersController < ApplicationController
     redirect_to '/welcome'
   end
 
+  def most_decks
+    @users = User.all 
+  end 
+
 end 
 
 
