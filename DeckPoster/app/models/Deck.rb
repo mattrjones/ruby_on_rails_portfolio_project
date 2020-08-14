@@ -13,6 +13,16 @@ scope :creator, -> (id) { where(user_id: id) }
 scope :commented, -> {where ("comments_count > 0")}
 before_save :default_comments_count
 
+    def archetype_name 
+        self.try(:archetype).try(:name)
+    end 
+
+
+    def archetype_name=(name)
+        archetype = Archetype.find_or_create_by(name: name)
+        self.archetype = archetype
+    end 
+
     def default_comments_count
         self.comments_count ||= 0
     end
