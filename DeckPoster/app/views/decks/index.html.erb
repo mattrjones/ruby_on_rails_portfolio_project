@@ -13,7 +13,7 @@
   <% end %>
 
   <% @decks.each do |deck| %>
-    <div><%= link_to deck.name, deck%>, by <%= deck.user.name%></div> 
+    <div><%= link_to deck.name, deck%>, by <%= link_to deck.user.name, deck.user%></div> 
         <%end %>
         <p></p>
         <div><%= link_to "Create a New Deck", new_user_deck_path(current_user) %></div>

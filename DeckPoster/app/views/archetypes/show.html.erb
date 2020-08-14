@@ -2,6 +2,6 @@
 
 <ol>
 <% @archetype.decks.each do |d| %>
-    <li><%= link_to d.name, deck_path(d) %></li>
+    <li><%= link_to d.name, deck_path(d) %>, by <%= link_to d.user.name, d.user %></li>
     <% end %>
     </ol>

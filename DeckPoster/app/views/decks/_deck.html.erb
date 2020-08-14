@@ -1,4 +1,4 @@
-    <h2><%= deck.name %></h2>
+    <h2><%= deck.name %>, by <%= link_to deck.user.name, deck.user %></h2>
     <div><h3>List:</h3> <%= deck.decklist %></div>
     <div><h3>Description:</h3> <%= deck.description %></div>
 <% if @user.id == @deck.user_id %>
@@ -9,6 +9,6 @@
 
     <h2>Comments on This Deck:</h2>
     <% deck.comments.each do |c| %>
-        <h3><%= c.user.name %> says, </h3>
+        <h3><%= link_to c.user.name, c.user %> says, </h3>
         <div><%= c.content %></div>
         <% end %>

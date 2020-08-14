@@ -2,6 +2,6 @@
 
 <ol>
 <% Deck.commented.each do |deck| %>
-    <li><%= link_to deck.name, deck %>, <%=deck.comments_count%> comment(s)</li>
+    <li><%= link_to deck.name, deck %>, by <%= link_to deck.user.name, deck.user %>, <%=deck.comments_count%> comment(s)</li>
     <% end %>
     </ol>
