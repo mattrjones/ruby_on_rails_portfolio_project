@@ -22,6 +22,7 @@ class DecksController < ApplicationController
         redirect_to user_decks_path(@user), alert: "Deck not found"
       end
     else
+      @user = User.find_by(id: session[:user_id])
       @deck = Deck.find(params[:id])
     end
   end

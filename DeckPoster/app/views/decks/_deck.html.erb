@@ -1,10 +1,11 @@
     <h2><%= deck.name %></h2>
     <div><h3>List:</h3> <%= deck.decklist %></div>
     <div><h3>Description:</h3> <%= deck.description %></div>
-
+<% if @user.id == @deck.user_id %>
     <div><%= link_to 'Edit Deck', edit_deck_path(deck) %></div>
-
+<% else %>
     <%= link_to "Comment on This Deck", new_deck_comment_path(@deck) %>
+    <% end %>
 
     <h2>Comments on This Deck:</h2>
     <% deck.comments.each do |c| %>
