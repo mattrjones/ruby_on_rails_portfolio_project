@@ -1,3 +1,4 @@
+<% if @current_user == @user %>
 <h1> <%= @user.name %> </h1>
 <h3> <%= @user.email %> </h3>
 
@@ -35,3 +36,23 @@
             </ol>
 
 <div><%= link_to "Create A New Deck", new_user_deck_path(@user) %></div>
+
+<% else %>
+
+<h1><%= @user.name %>'s Page</h1>
+
+Decks Posted by <%= @user.name %>:
+<ul>
+<% @user.decks.each do |d| %>
+    <li><%= link_to d.name, d %></li>
+    <% end %>
+    </ul>
+
+    Comments Made by <%= @user.name %>:
+    <ul>
+    <% Comment.creator(@user.id).each do |c| %>
+        <li><%= link_to c.content.first(30), c %>, on <%= link_to c.deck.name, c.deck %></li>
+        <% end %>
+        </ul>
+
+        <% end %>
