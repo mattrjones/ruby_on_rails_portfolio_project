@@ -3,6 +3,6 @@
         <% end %>
 
         <% ordered_users = User.order_by_decks %> 
-        <% @users.each do |u| %>
+        <% ordered_users.each do |u| %>
             <div><%= u.name %> has posted <%= u.decks_posted %> decks.</div>
             <% end %>
