@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base 
     has_many :decks
-has_many :comments, through: :decks
-#has_many :commented_decks, through: :decks, source: :deck 
-has_many :archetypes, through: :decks 
+has_many :comments, through: :decks 
+has_many :archetypes, through: :decks
+before_save :default_name 
 
 
 def self.find_or_create_by_omniauth(auth_hash)
@@ -11,4 +11,8 @@ def self.find_or_create_by_omniauth(auth_hash)
     u.password = SecureRandom.hex
     end
    end
+
+   def default_name
+    self.name ||= ""
+   end 
 end 

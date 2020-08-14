@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create, :create_from_omniauth]
+  skip_before_action :authorized, only: [:new, :create]
 
   def index
   end
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(params.require(:user).permit(:email,        
+    @user = User.create(params.require(:user).permit(:name, :email,        
     :password))
     session[:user_id] = @user.id
     redirect_to '/welcome'

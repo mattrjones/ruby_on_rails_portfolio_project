@@ -19,9 +19,14 @@ class SessionsController < ApplicationController
 
   def createlocal
     @user = User.find_by(:email => params[:email])
+    if @user.password == params[:password]
     session[:user_id] = @user.id 
-
     render 'welcome'
+    else 
+      session.delete(:user_id)
+      @current_user = nil
+      render 'welcome'
+    end 
   end 
  
 
